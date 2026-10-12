@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    /* Blue + Green Color Palette */
+    --primary-bg: #021124;    /* New Midnight Navy for clean readability on backgrounds */
+    --primary-dark: #01377D;  /* Original Deep Blue */
+    --primary-emerald: #009DD1; /* Bright Blue */
+    --accent-orange: #97E7F5;   /* Cyan */
+    --accent-green: #7ED348;    /* Light Green */
+    --light-green: #26B170;     /* Medium Green */
+    
+    --bg-white: #ffffff;
+    --bg-gray: #f8faf9;
+    --text-main: #374151;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Lenis Smooth Scroll Foundation */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+body {
+    color: var(--text-main);
+    background-color: var(--bg-gray);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Beautiful Smooth Gradient using your entire color palette */
+.tricolor-border {
+    height: 4px;
+    background: linear-gradient(to right, #01377D, #009DD1, #97E7F5, #7ED348, #26B170);
+}
+.bg-tricolor-gradient {
+    background: linear-gradient(135deg, rgba(0, 157, 209, 0.08) 0%, rgba(255, 255, 255, 1) 35%, rgba(255, 255, 255, 1) 65%, rgba(38, 177, 112, 0.08) 100%);
+}
+
+/* Hover Utilities */
+.hover-lift {
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+}
+
+/* Ambient Animations */
+@keyframes slow-pulse {
+    0% { transform: scale(1) translate(-50%, -50%); opacity: 0.1; }
+    50% { transform: scale(1.1) translate(-45%, -45%); opacity: 0.2; }
+    100% { transform: scale(1) translate(-50%, -50%); opacity: 0.1; }
+}
+.pulse-blob {
+    animation: slow-pulse 8s ease-in-out infinite;
+}
+
+/* Prevent scrolling when mobile menu or modal is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* -----------------------------------------------------
+   3D CARD & ANIMATION UTILITIES 
+   ----------------------------------------------------- */
+
+.perspective-container {
+    perspective: 1200px;
+    transform-style: preserve-3d;
+}
+
+/* 3D Tilt Card Base */
+.tilt-card {
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+/* Elements inside the card that float UP towards the user in 3D */
+.inner-3d {
+    transform: translateZ(40px);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.inner-3d-subtle {
+    transform: translateZ(20px);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* GSAP Initial States */
+.gsap-fade-3d-up, .gsap-fade-3d-right, .gsap-fade-up, .gsap-stagger-item {
+    visibility: hidden;
+    opacity: 0;
+}
