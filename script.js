@@ -19,18 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 2. Partner With Us Modal Logic
     const partnerModal = document.getElementById('partner-modal');
-    const closeModalBtn = document.getElementById('close-modal-btn');
-    const modalBackdrop = document.querySelector('.modal-backdrop');
-    const modalContent = document.getElementById('partner-modal-content');
+    const closePartnerModalBtn = document.getElementById('close-modal-btn');
+    const partnerModalBackdrop = document.querySelector('.modal-backdrop');
+    const partnerModalContent = document.getElementById('partner-modal-content');
 
-    // Automatically show modal 20 seconds (20000ms) after page load
     setTimeout(() => {
         if(partnerModal) {
             partnerModal.classList.remove('hidden');
             void partnerModal.offsetWidth; 
             partnerModal.classList.remove('opacity-0');
-            modalContent.classList.remove('scale-95');
-            modalContent.classList.add('scale-100');
+            partnerModalContent.classList.remove('scale-95');
+            partnerModalContent.classList.add('scale-100');
             document.body.classList.add('menu-open');
             lenis.stop(); 
         }
@@ -38,8 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function closePartnerModal() {
         partnerModal.classList.add('opacity-0');
-        modalContent.classList.remove('scale-100');
-        modalContent.classList.add('scale-95');
+        partnerModalContent.classList.remove('scale-100');
+        partnerModalContent.classList.add('scale-95');
         setTimeout(() => {
             partnerModal.classList.add('hidden');
             document.body.classList.remove('menu-open');
@@ -47,11 +46,102 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     }
 
-    if(closeModalBtn) closeModalBtn.addEventListener('click', closePartnerModal);
-    if(modalBackdrop) modalBackdrop.addEventListener('click', closePartnerModal);
+    if(closePartnerModalBtn) closePartnerModalBtn.addEventListener('click', closePartnerModal);
+    if(partnerModalBackdrop) partnerModalBackdrop.addEventListener('click', closePartnerModal);
 
-    // 3. Navbar Scroll Effect
-    // The background stays Deep Blue so SURAKSHA is always visible. We just add a shadow on scroll.
+
+    // 3. Logo Pop-Up Modal Logic
+    const logoModal = document.getElementById('logo-modal');
+    const closeLogoModalBtn = document.getElementById('close-logo-modal-btn');
+    const logoModalBackdrop = document.querySelector('.logo-modal-backdrop');
+    const logoModalContent = document.getElementById('logo-modal-content');
+    const logoBtns = document.querySelectorAll('.logo-popup-trigger');
+
+    function openLogoModal(e) {
+        e.preventDefault(); 
+        logoModal.classList.remove('hidden');
+        void logoModal.offsetWidth; 
+        logoModal.classList.remove('opacity-0');
+        logoModalContent.classList.remove('scale-95');
+        logoModalContent.classList.add('scale-100');
+        document.body.classList.add('menu-open');
+        lenis.stop(); 
+    }
+
+    function closeLogoModal() {
+        logoModal.classList.add('opacity-0');
+        logoModalContent.classList.remove('scale-100');
+        logoModalContent.classList.add('scale-95');
+        setTimeout(() => {
+            logoModal.classList.add('hidden');
+            // Only unfreeze scroll if partner modal is also hidden
+            if(partnerModal && partnerModal.classList.contains('hidden')) {
+                document.body.classList.remove('menu-open');
+                lenis.start(); 
+            }
+        }, 300);
+    }
+
+    logoBtns.forEach(btn => btn.addEventListener('click', openLogoModal));
+    if(closeLogoModalBtn) closeLogoModalBtn.addEventListener('click', closeLogoModal);
+    if(logoModalBackdrop) logoModalBackdrop.addEventListener('click', closeLogoModal);
+
+
+    // 4. NEW: Gallery Media Pop-Up Modal Logic
+    const galleryModal = document.getElementById('gallery-modal');
+    const closeGalleryModalBtn = document.getElementById('close-gallery-modal-btn');
+    const galleryModalBackdrop = document.querySelector('.gallery-modal-backdrop');
+    const galleryModalContent = document.getElementById('gallery-modal-content');
+    const galleryMediaContainer = document.getElementById('gallery-modal-media-container');
+    const galleryTriggers = document.querySelectorAll('.gallery-popup-trigger');
+
+    function openGalleryModal(e) {
+        const card = e.currentTarget;
+        const mediaType = card.getAttribute('data-type');
+        const mediaSrc = card.getAttribute('data-src');
+
+        // Clear previous content
+        galleryMediaContainer.innerHTML = ''; 
+
+        // Inject the correct media type into the modal
+        if (mediaType === 'video') {
+            galleryMediaContainer.innerHTML = `<video src="${mediaSrc}" controls autoplay playsinline class="w-full max-h-[85vh] object-contain rounded-xl shadow-2xl bg-black"></video>`;
+        } else if (mediaType === 'image') {
+            galleryMediaContainer.innerHTML = `<img src="${mediaSrc}" class="w-full max-h-[85vh] object-contain rounded-xl shadow-2xl bg-transparent">`;
+        }
+
+        galleryModal.classList.remove('hidden');
+        void galleryModal.offsetWidth;
+        galleryModal.classList.remove('opacity-0');
+        galleryModalContent.classList.remove('scale-95');
+        galleryModalContent.classList.add('scale-100');
+        document.body.classList.add('menu-open');
+        lenis.stop();
+    }
+
+    function closeGalleryModal() {
+        galleryModal.classList.add('opacity-0');
+        galleryModalContent.classList.remove('scale-100');
+        galleryModalContent.classList.add('scale-95');
+        setTimeout(() => {
+            galleryModal.classList.add('hidden');
+            galleryMediaContainer.innerHTML = ''; // This stops the video from continuing to play in the background
+            
+            // Check if other modals are open before resuming scroll
+            if ((!partnerModal || partnerModal.classList.contains('hidden')) && 
+                (!logoModal || logoModal.classList.contains('hidden'))) {
+                document.body.classList.remove('menu-open');
+                lenis.start();
+            }
+        }, 300);
+    }
+
+    galleryTriggers.forEach(trigger => trigger.addEventListener('click', openGalleryModal));
+    if(closeGalleryModalBtn) closeGalleryModalBtn.addEventListener('click', closeGalleryModal);
+    if(galleryModalBackdrop) galleryModalBackdrop.addEventListener('click', closeGalleryModal);
+
+
+    // 5. Navbar Scroll Effect
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
@@ -61,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 4. Mobile Menu Logic
+    // 6. Mobile Menu Logic
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const closeMenuBtn = document.getElementById('close-menu-btn');
     const mobileDrawer = document.getElementById('mobile-drawer');
@@ -88,7 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileMenuBackdrop.classList.add('hidden');
         }, 300);
         
-        if(partnerModal && partnerModal.classList.contains('hidden')) {
+        if((!partnerModal || partnerModal.classList.contains('hidden')) && 
+           (!logoModal || logoModal.classList.contains('hidden')) &&
+           (!galleryModal || galleryModal.classList.contains('hidden'))) {
             body.classList.remove('menu-open');
             lenis.start();
         }
@@ -99,133 +191,166 @@ document.addEventListener('DOMContentLoaded', () => {
     if(mobileMenuBackdrop) mobileMenuBackdrop.addEventListener('click', closeMenu);
     mobileLinks.forEach(link => { link.addEventListener('click', closeMenu); });
 
-    // 5. GSAP 3D Scroll Animations
-    
-    // Simple Fade Ups (For regular text)
-    gsap.utils.toArray('.gsap-fade-up').forEach(element => {
-        gsap.fromTo(element, 
-            { y: 50, autoAlpha: 0 },
-            {
-                y: 0,
-                autoAlpha: 1,
-                duration: 1,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: element,
-                    start: "top 85%",
-                }
-            }
-        );
-    });
 
-    // 3D Fade Up (Folds up like a hinge)
-    gsap.utils.toArray('.gsap-fade-3d-up').forEach(element => {
-        gsap.fromTo(element, 
-            { y: 80, autoAlpha: 0, rotationX: -30, transformPerspective: 1000 },
-            {
-                y: 0,
-                autoAlpha: 1,
-                rotationX: 0,
-                duration: 1.2,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: element,
-                    start: "top 85%",
+    // 7. GSAP Animations Initialization Function
+    function initAnimations() {
+        gsap.utils.toArray('.gsap-fade-up').forEach(element => {
+            gsap.fromTo(element, 
+                { y: 50, autoAlpha: 0 },
+                {
+                    y: 0,
+                    autoAlpha: 1,
+                    duration: 1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 85%",
+                    }
                 }
-            }
-        );
-    });
+            );
+        });
 
-    // 3D Fade Right
-    gsap.utils.toArray('.gsap-fade-3d-right').forEach(element => {
-        gsap.fromTo(element, 
-            { x: -80, autoAlpha: 0, rotationY: 30, transformPerspective: 1000 },
-            {
-                x: 0,
-                autoAlpha: 1,
-                rotationY: 0,
-                duration: 1.2,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: element,
-                    start: "top 85%",
+        gsap.utils.toArray('.gsap-fade-3d-up').forEach(element => {
+            gsap.fromTo(element, 
+                { y: 80, autoAlpha: 0, rotationX: -30, transformPerspective: 1000 },
+                {
+                    y: 0,
+                    autoAlpha: 1,
+                    rotationX: 0,
+                    duration: 1.2,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 85%",
+                    }
                 }
-            }
-        );
-    });
+            );
+        });
 
-    // 3D Staggered Container Groups (Cards flip into place sequentially)
-    gsap.utils.toArray('.gsap-stagger-container').forEach(container => {
-        const items = container.querySelectorAll('.gsap-stagger-item');
-        gsap.fromTo(items,
-            { y: 80, autoAlpha: 0, rotationX: -20, transformPerspective: 1200 },
-            {
-                y: 0,
-                autoAlpha: 1,
-                rotationX: 0,
-                duration: 1,
-                stagger: 0.15,
-                ease: "back.out(1.2)",
+        gsap.utils.toArray('.gsap-fade-3d-right').forEach(element => {
+            gsap.fromTo(element, 
+                { x: -80, autoAlpha: 0, rotationY: 30, transformPerspective: 1000 },
+                {
+                    x: 0,
+                    autoAlpha: 1,
+                    rotationY: 0,
+                    duration: 1.2,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 85%",
+                    }
+                }
+            );
+        });
+
+        gsap.utils.toArray('.gsap-stagger-container').forEach(container => {
+            const items = container.querySelectorAll('.gsap-stagger-item');
+            gsap.fromTo(items,
+                { y: 80, autoAlpha: 0, rotationX: -20, transformPerspective: 1200 },
+                {
+                    y: 0,
+                    autoAlpha: 1,
+                    rotationX: 0,
+                    duration: 1,
+                    stagger: 0.15,
+                    ease: "back.out(1.2)",
+                    scrollTrigger: {
+                        trigger: container,
+                        start: "top 80%",
+                    }
+                }
+            );
+        });
+
+        gsap.utils.toArray('.img-parallax-container').forEach(container => {
+            const img = container.querySelector('.parallax-img');
+            gsap.to(img, {
+                yPercent: 15,
+                ease: "none",
                 scrollTrigger: {
                     trigger: container,
-                    start: "top 80%",
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
                 }
-            }
-        );
-    });
-
-    // Image Parallax Effect
-    gsap.utils.toArray('.img-parallax-container').forEach(container => {
-        const img = container.querySelector('.parallax-img');
-        gsap.to(img, {
-            yPercent: 15,
-            ease: "none",
-            scrollTrigger: {
-                trigger: container,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true
-            }
+            });
         });
-    });
 
-    // Number Counter Animation
-    const counters = document.querySelectorAll('.counter');
-    counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        ScrollTrigger.create({
-            trigger: counter,
-            start: "top 85%",
-            once: true,
-            onEnter: () => {
-                let current = { val: 0 };
-                gsap.to(current, {
-                    val: target,
-                    duration: 2.5,
-                    ease: "power3.out",
-                    onUpdate: () => {
-                        counter.innerHTML = Math.floor(current.val).toLocaleString() + (target > 100 ? '+' : '');
-                    }
-                });
-            }
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            ScrollTrigger.create({
+                trigger: counter,
+                start: "top 85%",
+                once: true,
+                onEnter: () => {
+                    let current = { val: 0 };
+                    gsap.to(current, {
+                        val: target,
+                        duration: 2.5,
+                        ease: "power3.out",
+                        onUpdate: () => {
+                            counter.innerHTML = Math.floor(current.val).toLocaleString() + (target > 100 ? '+' : '');
+                        }
+                    });
+                }
+            });
         });
-    });
+    }
 
-    // 6. Interactive 3D Mouse Tilt Effect for Cards
+    // 8. 3-Second Launch Image Cinematic Transition
+    const heroMediaContainer = document.getElementById('hero-media-container');
+    const heroLaunchImg = document.getElementById('hero-launch-img');
+    const heroVideo = document.getElementById('hero-video');
+    const heroTextBlock = document.getElementById('hero-text-block');
+
+    if (heroMediaContainer && heroLaunchImg) {
+        
+        document.body.classList.add('overflow-hidden');
+        lenis.stop();
+        gsap.set(heroTextBlock, { opacity: 0, y: 100 });
+
+        setTimeout(() => {
+            const targetHeight = window.innerWidth >= 1024 ? '65vh' : '50vh';
+            
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    document.body.classList.remove('overflow-hidden');
+                    lenis.start();
+                    heroLaunchImg.classList.add('hidden');
+                    initAnimations(); 
+                    ScrollTrigger.refresh();
+                }
+            });
+
+            tl.to(heroMediaContainer, { height: targetHeight, duration: 1.5, ease: "power3.inOut" })
+              .to(heroTextBlock, { y: 0, opacity: 1, duration: 1.2, ease: "power3.out" }, "-=1.0")
+              .call(() => {
+                  if (heroVideo) heroVideo.play().catch(e => console.log("Video autoplay prevented:", e));
+              }, null, "-=1.0")
+              .to(heroLaunchImg, { opacity: 0, scale: 0.95, duration: 1 }, "-=1.0")
+              .to(heroVideo, { opacity: 0.8, duration: 1 }, "-=1.0");
+
+        }, 2000); 
+
+    } else {
+        if(heroTextBlock) gsap.set(heroTextBlock, { opacity: 1, y: 0 });
+        initAnimations();
+    }
+
+    // 9. Interactive 3D Mouse Tilt Effect for Cards
     const tiltCards = document.querySelectorAll('.tilt-card');
     
     tiltCards.forEach(card => {
         card.addEventListener('mousemove', e => {
             const rect = card.getBoundingClientRect();
-            // Get cursor position relative to the card
             const x = e.clientX - rect.left; 
             const y = e.clientY - rect.top;
             
-            // Calculate percentage from center
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             
-            // Generate rotation degrees (max 10 degrees)
             const rotateX = ((y - centerY) / centerY) * -10;
             const rotateY = ((x - centerX) / centerX) * 10;
             
@@ -233,7 +358,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         card.addEventListener('mouseleave', () => {
-            // Reset to flat when mouse leaves
             card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
         });
     });
