@@ -16,7 +16,7 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Tailwind Configuration -->
+    <!-- Tailwind Configuration (Medical + AI Futuristic Theme) -->
     <script>
         tailwind.config = {
             theme: {
@@ -27,37 +27,58 @@
                     },
                     colors: {
                         corporate: {
-                            950: '#021124', 
-                            900: '#01377D', 
-                            800: '#009DD1', 
-                            100: '#97E7F5', 
+                            950: '#060B10', // Deep Tech Slate
+                            900: '#0E1720', // Dark Clinical Slate
+                            800: '#172635', // Mid Slate
+                            100: '#E2F1F8', // Medical Ice Blue
                         },
                         accent: {
-                            light: '#7ED348',   
-                            primary: '#26B170'  
+                            light: '#00F0FF',   // AI Cyan Glow
+                            primary: '#00C9A7'  // Clinical Emerald
                         }
                     }
                 }
             }
         }
     </script>
+    <style>
+        /* Custom Glowing AI Accents */
+        .ai-glow { text-shadow: 0 0 15px rgba(0, 240, 255, 0.5); }
+        .ai-border-glow { box-shadow: 0 0 20px rgba(0, 240, 255, 0.15); }
+        .hover-ai-glow:hover { box-shadow: 0 0 25px rgba(0, 201, 167, 0.6); }
+        .gradient-text {
+            background: linear-gradient(90deg, #00F0FF, #00C9A7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .ai-top-border {
+            background: linear-gradient(90deg, #00F0FF, #00C9A7, #00F0FF);
+            background-size: 200% 200%;
+            animation: gradientMove 3s ease infinite;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
 </head>
-<body class="bg-white text-slate-800 font-sans antialiased overflow-x-hidden selection:bg-corporate-800 selection:text-white">
+<body class="bg-white text-slate-800 font-sans antialiased overflow-x-hidden selection:bg-accent-primary selection:text-white">
 
     <!-- Partner Modal -->
-    <div id="partner-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
-        <div class="absolute inset-0 bg-corporate-950/85 backdrop-blur-sm modal-backdrop cursor-pointer"></div>
-        <div class="relative bg-white rounded-xl shadow-2xl p-8 max-w-lg w-full mx-4 transform scale-95 transition-transform duration-300 flex flex-col" id="partner-modal-content">
-            <button id="close-modal-btn" class="absolute top-4 right-4 text-slate-400 hover:text-corporate-900 transition-colors">
+    <div id="partner-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300 px-4">
+        <div class="absolute inset-0 bg-corporate-950/90 backdrop-blur-md modal-backdrop cursor-pointer"></div>
+        <div class="relative bg-corporate-900 border border-corporate-800 ai-border-glow rounded-xl shadow-2xl p-6 sm:p-8 max-w-lg w-full transform scale-95 transition-transform duration-300 flex flex-col" id="partner-modal-content">
+            <button id="close-modal-btn" class="absolute top-4 right-4 text-slate-400 hover:text-accent-light transition-colors">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
             <div class="text-center pt-2">
-                <div class="w-16 h-16 bg-corporate-100 rounded-full flex items-center justify-center mx-auto mb-5">
-                    <svg class="w-8 h-8 text-corporate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                <div class="w-16 h-16 bg-corporate-800 rounded-full flex items-center justify-center mx-auto mb-5 border border-accent-light/30 shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+                    <svg class="w-8 h-8 text-accent-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                 </div>
-                <h3 class="font-display font-bold text-2xl text-corporate-900 mb-3">Join the Mission</h3>
-                <p class="text-slate-600 mb-8 leading-relaxed">The mission continues. Partner with SURAKSHA™ and help us build a healthier, safer ecosystem across India.</p>
-                <a href="https://mission1mn.org/csr_register.html" target="_blank" class="bg-corporate-900 text-white px-8 py-3.5 rounded-sm font-semibold hover:bg-corporate-800 transition-colors block w-full shadow-lg tilt-card">
+                <h3 class="font-display font-bold text-2xl text-white mb-3">Join the Mission</h3>
+                <p class="text-slate-300 mb-8 leading-relaxed text-sm sm:text-base">The mission continues. Partner with SURAKSHA™ and help us build a futuristic, healthier ecosystem across India.</p>
+                <a href="https://mission1mn.org/csr_register.html" target="_blank" class="bg-gradient-to-r from-accent-primary to-accent-light text-corporate-950 px-8 py-3.5 rounded-full font-bold hover-ai-glow transition-all duration-300 block w-full shadow-lg tilt-card">
                     Partner with Us
                 </a>
             </div>
@@ -65,9 +86,9 @@
     </div>
 
     <!-- Logo Pop-Up Modal -->
-    <div id="logo-modal" class="fixed inset-0 z-[110] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
-        <div class="absolute inset-0 bg-corporate-950/85 backdrop-blur-sm logo-modal-backdrop cursor-pointer"></div>
-        <div class="relative bg-white rounded-xl shadow-2xl p-8 max-w-sm w-full mx-4 transform scale-95 transition-transform duration-300 flex flex-col items-center justify-center text-center" id="logo-modal-content">
+    <div id="logo-modal" class="fixed inset-0 z-[110] flex items-center justify-center hidden opacity-0 transition-opacity duration-300 px-4">
+        <div class="absolute inset-0 bg-corporate-950/90 backdrop-blur-md logo-modal-backdrop cursor-pointer"></div>
+        <div class="relative bg-white border-2 border-accent-light ai-border-glow rounded-xl shadow-2xl p-8 max-w-sm w-full transform scale-95 transition-transform duration-300 flex flex-col items-center justify-center text-center" id="logo-modal-content">
             <button id="close-logo-modal-btn" class="absolute top-4 right-4 text-slate-400 hover:text-corporate-900 transition-colors">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
@@ -76,46 +97,45 @@
     </div>
 
     <!-- Gallery Media Pop-Up Modal -->
-    <div id="gallery-modal" class="fixed inset-0 z-[120] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    <div id="gallery-modal" class="fixed inset-0 z-[120] flex items-center justify-center hidden opacity-0 transition-opacity duration-300 px-2 sm:px-4">
         <div class="absolute inset-0 bg-corporate-950/95 backdrop-blur-md gallery-modal-backdrop cursor-pointer"></div>
-        <div class="relative w-full max-w-5xl mx-4 transform scale-95 transition-transform duration-300 flex flex-col items-center justify-center" id="gallery-modal-content">
-            <button id="close-gallery-modal-btn" class="absolute -top-12 right-0 text-white hover:text-accent-primary transition-colors z-50">
+        <div class="relative w-full max-w-5xl transform scale-95 transition-transform duration-300 flex flex-col items-center justify-center" id="gallery-modal-content">
+            <button id="close-gallery-modal-btn" class="absolute -top-12 right-0 text-white hover:text-accent-light transition-colors z-50">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
-            <!-- Dynamic content (img or video) will be injected here -->
-            <div id="gallery-modal-media-container" class="w-full rounded-xl overflow-hidden shadow-2xl flex items-center justify-center">
+            <div id="gallery-modal-media-container" class="w-full rounded-xl overflow-hidden ai-border-glow shadow-2xl flex items-center justify-center border border-corporate-800">
             </div>
         </div>
     </div>
 
-    <!-- Top Border -->
-    <div class="tricolor-border fixed top-0 w-full z-50"></div>
+    <!-- AI Animated Top Border -->
+    <div class="ai-top-border fixed top-0 w-full h-1 z-50"></div>
 
     <!-- Navigation -->
-    <header class="fixed top-[4px] w-full z-40 bg-corporate-950/95 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+    <header class="fixed top-[4px] w-full z-40 bg-corporate-950/80 backdrop-blur-lg border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="z-50 relative flex items-center gap-3">
                 <a href="#" class="logo-popup-trigger flex-shrink-0 cursor-pointer" title="View Logo">
-                    <img src="assets/Logo.jpeg" alt="SURAKSHA™ Logo" class="h-10 md:h-12 w-auto object-contain rounded-sm">
+                    <img src="assets/Logo.jpeg" alt="SURAKSHA™ Logo" class="h-9 sm:h-10 md:h-12 w-auto object-contain rounded-sm">
                 </a>
-                <a href="#" class="font-display font-bold text-2xl tracking-tight text-white hover:text-corporate-100 transition-colors" title="Go to Home">
-                    SURAKSHA<span class="text-accent-light text-lg">™</span>
+                <a href="#" class="font-display font-bold text-xl sm:text-2xl tracking-tight text-white hover:text-accent-light transition-colors" title="Go to Home">
+                    SURAKSHA<span class="text-accent-primary text-sm sm:text-lg">™</span>
                 </a>
             </div>
             
             <div class="hidden lg:flex items-center gap-8">
                 <nav class="flex items-center gap-8">
-                    <a href="#mission" class="text-sm font-medium text-corporate-100 hover:text-white transition-colors">Mission 1 Million</a>
-                    <a href="#gallery" class="text-sm font-medium text-corporate-100 hover:text-white transition-colors">Videos & Pictures</a>
-                    <a href="#impact" class="text-sm font-medium text-corporate-100 hover:text-white transition-colors">Impact</a>
-                    <a href="#speakers" class="text-sm font-medium text-corporate-100 hover:text-white transition-colors">Keynote Speakers</a>
+                    <a href="#mission" class="text-sm font-medium text-slate-300 hover:text-accent-light transition-colors">Mission & Vision</a>
+                    <a href="#gallery" class="text-sm font-medium text-slate-300 hover:text-accent-light transition-colors">Media Gallery</a>
+                    <a href="#impact" class="text-sm font-medium text-slate-300 hover:text-accent-light transition-colors">Impact Data</a>
+                    <a href="#speakers" class="text-sm font-medium text-slate-300 hover:text-accent-light transition-colors">Keynote Speakers</a>
                 </nav>
-                <a href="https://mission1mn.org/csr_register.html" target="_blank" class="bg-accent-primary text-white px-6 py-2.5 rounded-sm text-sm font-bold hover:bg-accent-light hover:text-corporate-900 transition-colors shadow-md hover-lift">
+                <a href="https://mission1mn.org/csr_register.html" target="_blank" class="bg-transparent border border-accent-primary text-accent-light px-6 py-2.5 rounded-full text-sm font-bold hover:bg-accent-primary hover:text-corporate-950 transition-all shadow-[0_0_10px_rgba(0,201,167,0.2)] hover-ai-glow">
                     Partner with Us
                 </a>
             </div>
 
-            <button id="mobile-menu-btn" class="lg:hidden p-2 text-white hover:bg-white/10 rounded-md transition-colors z-50 relative" aria-label="Toggle Menu">
+            <button id="mobile-menu-btn" class="lg:hidden p-2 text-white hover:text-accent-light rounded-md transition-colors z-50 relative" aria-label="Toggle Menu">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
@@ -123,24 +143,24 @@
         </div>
     </header>
 
-    <div id="mobile-backdrop" class="fixed inset-0 bg-corporate-950/80 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"></div>
-
-    <div id="mobile-drawer" class="fixed top-0 right-0 h-full w-72 bg-corporate-950 z-50 transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col border-l border-white/10">
-        <div class="flex items-center justify-between p-6 border-b border-white/10 mt-3">
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-backdrop" class="fixed inset-0 bg-corporate-950/90 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"></div>
+    <div id="mobile-drawer" class="fixed top-0 right-0 h-full w-72 sm:w-80 bg-corporate-900 border-l border-corporate-800 z-50 transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col">
+        <div class="flex items-center justify-between p-6 border-b border-corporate-800 mt-3">
             <span class="font-display font-bold text-lg text-white">Menu</span>
-            <button id="close-menu-btn" class="p-2 text-corporate-100 hover:bg-white/10 rounded-md transition-colors">
+            <button id="close-menu-btn" class="p-2 text-slate-400 hover:text-accent-light rounded-md transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
         </div>
         <nav class="flex flex-col p-6 gap-6 overflow-y-auto">
-            <a href="#mission" class="mobile-link text-base font-medium text-corporate-100 hover:text-white transition-colors">Mission 1 Million</a>
-            <a href="#gallery" class="mobile-link text-base font-medium text-corporate-100 hover:text-white transition-colors">Videos & Pictures</a>
-            <a href="#impact" class="mobile-link text-base font-medium text-corporate-100 hover:text-white transition-colors">Impact</a>
-            <a href="#speakers" class="mobile-link text-base font-medium text-corporate-100 hover:text-white transition-colors">Keynote Speakers</a>
-            <div class="mt-4 pt-6 border-t border-white/10 flex flex-col gap-4">
-                <a href="https://mission1mn.org/csr_register.html" target="_blank" class="bg-accent-primary text-white px-6 py-3 rounded-sm text-sm font-bold text-center hover:bg-accent-light hover:text-corporate-900 transition-colors shadow-md">
+            <a href="#mission" class="mobile-link text-base font-medium text-slate-300 hover:text-accent-light transition-colors">Mission & Vision</a>
+            <a href="#gallery" class="mobile-link text-base font-medium text-slate-300 hover:text-accent-light transition-colors">Media Gallery</a>
+            <a href="#impact" class="mobile-link text-base font-medium text-slate-300 hover:text-accent-light transition-colors">Impact Data</a>
+            <a href="#speakers" class="mobile-link text-base font-medium text-slate-300 hover:text-accent-light transition-colors">Keynote Speakers</a>
+            <div class="mt-4 pt-6 border-t border-corporate-800 flex flex-col gap-4">
+                <a href="https://mission1mn.org/csr_register.html" target="_blank" class="bg-gradient-to-r from-accent-primary to-accent-light text-corporate-950 px-6 py-3 rounded-full text-sm font-bold text-center hover-ai-glow transition-all">
                     Partner with Us
                 </a>
             </div>
@@ -149,52 +169,75 @@
 
     <main class="pt-20 bg-corporate-950">
         
-        <!-- Cinematic Video Showcase & Hero Image Integration -->
+        <!-- Cinematic Looping Showcase (Image & Video Carousel) -->
         <section id="hero-media-container" class="w-full relative bg-corporate-950 overflow-hidden" style="height: calc(100vh - 80px);">
-            <img id="hero-launch-img" src="assets/Suraksha Mission Highway Health Launch.png" alt="Project Launch" class="absolute inset-0 w-full h-full object-contain bg-corporate-950 z-20 p-2 md:p-6 transition-opacity duration-1000">
-            <video id="hero-video" loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 mix-blend-screen z-10">
+            
+            <!-- Launch Image -->
+            <img id="hero-launch-img" src="assets/Suraksha Mission Highway Health Launch.png" alt="Project Launch" class="absolute inset-0 w-full h-full object-contain bg-corporate-950 z-20 p-4 md:p-6 pointer-events-none">
+            
+            <!-- Video Player -->
+            <!-- MUST be autoplay muted for browsers to allow it to load and play -->
+            <video id="hero-video" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 mix-blend-screen z-10">
                 <source src="assets/video1.mp4" type="video/mp4">
-                <img src="assets/hero.jpg" alt="India Highway Background" class="w-full h-full object-cover">
             </video>
-            <div class="absolute inset-0 shadow-[inset_0_-80px_60px_-20px_#021124] pointer-events-none z-30"></div>
+
+            <!-- Invisible Click Layer (Captures taps on the video exactly like Instagram Reels) -->
+            <div id="video-click-layer" class="absolute inset-0 z-40 cursor-pointer hidden"></div>
+
+            <!-- Tech Vignette overlays -->
+            <div class="absolute inset-0 shadow-[inset_0_-100px_80px_-20px_#060B10] pointer-events-none z-30"></div>
+            <div class="absolute inset-0 bg-accent-primary/5 mix-blend-overlay pointer-events-none z-30"></div>
+
+            <!-- Video Mute/Unmute Button (Always on top) -->
+            <button id="mute-toggle-btn" type="button" class="absolute bottom-6 sm:bottom-10 right-6 sm:right-10 z-[100] bg-corporate-900/80 backdrop-blur-md border border-accent-light p-3 rounded-full text-accent-light hover:bg-accent-light hover:text-corporate-950 transition-all shadow-[0_0_20px_rgba(0,240,255,0.4)] cursor-pointer animate-pulse hidden flex items-center justify-center">
+                <!-- SVG for Unmuted (Hidden initially) -->
+                <svg id="icon-unmuted" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5 10v4a2 2 0 002 2h2l5 5V3l-5 5H7a2 2 0 00-2 2z"></path></svg>
+                <!-- SVG for Muted (Visible initially, telling user to tap) -->
+                <svg id="icon-muted" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" clip-rule="evenodd"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path></svg>
+            </button>
         </section>
 
         <!-- Hero Content Block -->
-        <section id="hero-text-block" class="pb-16 lg:pb-24 pt-8 bg-corporate-950 text-white relative z-20 border-b border-white/5">
-            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start w-full">
+        <section id="hero-text-block" class="pb-16 lg:pb-24 pt-8 bg-corporate-950 text-white relative z-20 border-b border-corporate-800">
+            <div class="absolute left-0 top-0 w-64 h-64 bg-accent-light rounded-full blur-[100px] opacity-10 pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start w-full relative z-10">
                 
                 <div class="max-w-2xl gsap-fade-3d-right">
-                    <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-6 flex items-center gap-2">
-                        <span class="w-8 h-[2px] bg-accent-light"></span> 2026 Highlights & Upcoming Event
+                    <p class="text-accent-light text-xs font-bold tracking-widest uppercase mb-6 flex items-center gap-3">
+                        <span class="w-10 h-[2px] bg-accent-light ai-border-glow"></span> 2026 AI-Enabled Highlights
                     </p>
-                    <h2 class="font-display font-bold text-4xl lg:text-5xl xl:text-6xl leading-tight mb-6 text-white drop-shadow-md">
-                        SURAKSHA™ Healthy Highways <span class="text-corporate-100">Conclave</span>
+                    <h2 class="font-display font-bold text-4xl sm:text-5xl xl:text-6xl leading-tight mb-6 text-white drop-shadow-md">
+                        SURAKSHA™ <br>
+                        <span class="gradient-text">Healthy Highways</span> Conclave
                     </h2>
-                    <p class="text-lg text-slate-300 mb-10 font-light leading-relaxed text-justify lg:text-left">
-                        Relive the historic moments, pictures, and videos from our latest event—and secure your spot for the upcoming SURAKSHA™ Conclave.
+                    <p class="text-base sm:text-lg text-slate-300 mb-10 font-light leading-relaxed lg:text-left">
+                        Relive the historic moments, pictures, and videos from our latest event—and secure your spot for the upcoming futuristic SURAKSHA™ Conclave.
                     </p>
                     
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="https://mission1mn.org/csr_register.html" target="_blank" class="bg-accent-primary text-white px-8 py-3 rounded-sm text-sm font-semibold text-center hover:bg-accent-light hover:text-corporate-900 transition-colors shadow-lg tilt-card inline-block">
+                        <a href="https://mission1mn.org/csr_register.html" target="_blank" class="bg-gradient-to-r from-accent-primary to-accent-light text-corporate-950 px-8 py-3.5 rounded-full text-sm font-bold text-center hover-ai-glow transition-all shadow-lg tilt-card inline-block">
                             Partner with Us
                         </a>
-                        <a href="#gallery" class="border border-white/40 text-white px-8 py-3 rounded-sm text-sm font-semibold text-center hover:bg-white/10 transition-colors backdrop-blur-sm tilt-card inline-block">
-                            Watch Videos & Photos
+                        <a href="#gallery" class="border border-corporate-800 text-accent-light px-8 py-3.5 rounded-full text-sm font-semibold text-center hover:bg-corporate-900 transition-colors backdrop-blur-sm tilt-card inline-block">
+                            Watch Media Gallery
                         </a>
                     </div>
                 </div>
 
                 <div class="gsap-fade-3d-up perspective-container" style="transition-delay: 0.2s">
-                    <div class="tilt-card bg-corporate-900/60 backdrop-blur-md border border-white/10 p-8 lg:p-12 rounded-xl shadow-2xl">
-                        <h3 class="font-display text-2xl font-bold mb-4 text-white inner-3d">The Journey Continues</h3>
-                        <p class="text-corporate-100 leading-relaxed text-justify mb-8 inner-3d-subtle">
-                            Join industry leaders, policymakers, and healthcare pioneers as we continue to execute on our promises and build India's first AI-Enabled Highway Health ecosystem.
+                    <div class="tilt-card bg-corporate-900/80 backdrop-blur-xl border border-corporate-800 p-8 lg:p-12 rounded-2xl ai-border-glow shadow-2xl relative overflow-hidden">
+                        <div class="absolute -right-10 -top-10 w-32 h-32 bg-accent-primary rounded-full blur-3xl opacity-20 pointer-events-none"></div>
+                        
+                        <h3 class="font-display text-2xl font-bold mb-4 text-white inner-3d">The Evolution Continues</h3>
+                        <p class="text-corporate-100 leading-relaxed mb-8 inner-3d-subtle text-sm sm:text-base">
+                            Join industry leaders, policymakers, and healthcare pioneers as we execute on our promises and deploy India's first AI-Enabled Highway Health ecosystem.
                         </p>
-                        <div class="border-t border-white/10 pt-6 inner-3d-subtle">
-                            <p class="text-xs text-corporate-100 uppercase tracking-widest mb-1 opacity-70">Focus Initiative</p>
-                            <p class="font-medium text-lg text-accent-light mb-4">SURAKSHA™ Mission 1 Million</p>
-                            <a href="https://mission1mn.org/csr_register.html" target="_blank" class="text-accent-light text-sm font-semibold flex items-center gap-2 hover:text-white transition-colors inline-block">
-                                Proceed to Partner with Us &rarr;
+                        <div class="border-t border-corporate-800 pt-6 inner-3d-subtle">
+                            <p class="text-xs text-slate-400 uppercase tracking-widest mb-1">Focus Initiative</p>
+                            <p class="font-medium text-lg text-accent-light mb-4 ai-glow">SURAKSHA™ Mission 1 Million</p>
+                            <a href="https://mission1mn.org/csr_register.html" target="_blank" class="text-accent-primary text-sm font-semibold flex items-center gap-2 hover:text-accent-light transition-colors inline-block">
+                                Proceed to Partner with Us →
                             </a>
                         </div>
                     </div>
@@ -203,120 +246,164 @@
             </div>
         </section>
 
-        <!-- DEDICATED MISSION 1 MILLION SECTION -->
-        <section id="mission" class="py-24 bg-slate-50 relative overflow-hidden border-t border-slate-200">
-            <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-corporate-100 rounded-full blur-3xl opacity-60 pointer-events-none pulse-blob"></div>
+        <!-- DEDICATED VISION & MISSION 1 MILLION SECTION -->
+        <section id="mission" class="py-20 sm:py-24 bg-slate-50 relative overflow-hidden">
+            <div class="absolute -left-20 top-20 w-[500px] h-[500px] bg-accent-primary rounded-full blur-[120px] opacity-10 pointer-events-none"></div>
 
-            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-                <div class="lg:col-span-5 gsap-fade-3d-right perspective-container">
-                    <div class="tilt-card relative h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl border border-white">
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
+                
+                <div class="lg:col-span-5 gsap-fade-3d-right perspective-container order-2 lg:order-1">
+                    <div class="tilt-card relative h-[400px] sm:h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
                         <img src="assets/driver.png" alt="Highway Truck Driver" class="w-full h-full object-cover parallax-img">
-                        <div class="absolute inset-0 bg-gradient-to-t from-corporate-950/90 to-transparent flex flex-col justify-end p-8">
-                            <h3 class="text-white font-display font-bold text-2xl inner-3d">Impacting 1,000,000 Lives</h3>
+                        <div class="absolute inset-0 bg-gradient-to-t from-corporate-950 via-corporate-950/40 to-transparent flex flex-col justify-end p-8">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="w-2 h-2 rounded-full bg-accent-light animate-pulse"></span>
+                                <span class="text-accent-light text-xs font-bold uppercase tracking-widest">Active Corridor</span>
+                            </div>
+                            <h3 class="text-white font-display font-bold text-2xl sm:text-3xl inner-3d">Impacting 1,000,000 Lives</h3>
                         </div>
                     </div>
                 </div>
-                <div class="lg:col-span-7 space-y-6 gsap-fade-3d-up">
-                    <div class="inline-block px-4 py-1 bg-corporate-100 border border-corporate-800/20 rounded-full mb-2">
-                        <span class="text-corporate-900 text-sm font-bold tracking-widest uppercase">The Core Initiative</span>
+
+                <div class="lg:col-span-7 gsap-fade-3d-up order-1 lg:order-2">
+                    
+                    <div class="inline-block px-4 py-1.5 bg-corporate-100/50 border border-accent-primary/20 rounded-full mb-4">
+                        <span class="text-corporate-900 text-xs sm:text-sm font-bold tracking-widest uppercase">The Core Initiative</span>
                     </div>
-                    <h2 class="font-display font-bold text-4xl text-corporate-950 mb-6">SURAKSHA™ Mission 1 Million</h2>
-                    <p class="text-slate-600 text-lg leading-relaxed text-justify">
-                        Highlighted at the Conclave, <strong>Mission 1 Million</strong> is a nationwide movement to improve healthcare access for one million highway users. It serves as India's first AI-enabled Highway Health, Safety & Workforce Wellbeing Demonstration Corridor.
-                    </p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6">
-                        <div class="border-l-4 border-accent-primary pl-4">
-                            <h4 class="font-bold text-corporate-950 mb-2">Predictive AI Screening</h4>
-                            <p class="text-sm text-slate-600">Identifying risks before they become emergencies.</p>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-corporate-950 mb-8 leading-tight">SURAKSHA™ Mission 1 Million</h2>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+                        <!-- Vision Card -->
+                        <div class="bg-corporate-900 p-6 sm:p-8 rounded-2xl shadow-xl border-l-4 border-accent-light transform transition hover:-translate-y-2 hover:shadow-2xl">
+                            <h3 class="font-display text-xl font-bold text-white mb-3 flex items-center gap-3">
+                                <div class="p-2 bg-corporate-800 rounded-lg">
+                                    <svg class="w-6 h-6 text-accent-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                                </div>
+                                Our Vision
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                To build a connected, robust ecosystem for preventive health, road safety, and workforce wellbeing tailored specifically for the people who keep India moving.
+                            </p>
                         </div>
-                        <div class="border-l-4 border-accent-primary pl-4">
-                            <h4 class="font-bold text-corporate-950 mb-2">Digital Teleconsultation</h4>
-                            <p class="text-sm text-slate-600">Connecting drivers to qualified doctors anywhere, anytime.</p>
-                        </div>
-                        <div class="border-l-4 border-accent-primary pl-4">
-                            <h4 class="font-bold text-corporate-950 mb-2">Emergency Response</h4>
-                            <p class="text-sm text-slate-600">Rapid ambulance deployment and trauma care networking.</p>
-                        </div>
-                        <div class="border-l-4 border-accent-primary pl-4">
-                            <h4 class="font-bold text-corporate-950 mb-2">Community Wellness</h4>
-                            <p class="text-sm text-slate-600">Health education and nutrition support at rest stops.</p>
+
+                        <!-- Mission Card -->
+                        <div class="bg-gradient-to-br from-accent-primary to-teal-600 p-6 sm:p-8 rounded-2xl shadow-xl transform transition hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden">
+                            <div class="absolute right-0 top-0 opacity-10 transform translate-x-4 -translate-y-4">
+                                <svg class="w-32 h-32 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </div>
+                            <h3 class="font-display text-xl font-bold text-white mb-3 flex items-center gap-3 relative z-10">
+                                <div class="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                </div>
+                                Our Mission
+                            </h3>
+                            <p class="text-teal-50 text-sm leading-relaxed relative z-10">
+                                To drastically improve healthcare access for one million highway users by establishing India's very first AI-enabled Highway Health & Safety Demonstration Corridor.
+                            </p>
                         </div>
                     </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-slate-200">
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 w-2 h-2 rounded-full bg-accent-primary shrink-0 shadow-[0_0_8px_#00C9A7]"></div>
+                            <div>
+                                <h4 class="font-bold text-corporate-950 mb-1">Predictive AI Screening</h4>
+                                <p class="text-sm text-slate-600">Identifying risks before they become emergencies.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 w-2 h-2 rounded-full bg-accent-primary shrink-0 shadow-[0_0_8px_#00C9A7]"></div>
+                            <div>
+                                <h4 class="font-bold text-corporate-950 mb-1">Digital Teleconsultation</h4>
+                                <p class="text-sm text-slate-600">Connecting drivers to qualified doctors anytime.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 w-2 h-2 rounded-full bg-accent-primary shrink-0 shadow-[0_0_8px_#00C9A7]"></div>
+                            <div>
+                                <h4 class="font-bold text-corporate-950 mb-1">Emergency Response</h4>
+                                <p class="text-sm text-slate-600">Rapid ambulance and trauma care networking.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 w-2 h-2 rounded-full bg-accent-primary shrink-0 shadow-[0_0_8px_#00C9A7]"></div>
+                            <div>
+                                <h4 class="font-bold text-corporate-950 mb-1">Community Wellness</h4>
+                                <p class="text-sm text-slate-600">Health education & nutrition at rest stops.</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
         <!-- EVENT GALLERY SECTION -->
-        <section id="gallery" class="py-24 bg-white border-t border-slate-200">
-            <div class="max-w-7xl mx-auto px-6">
+        <section id="gallery" class="py-20 sm:py-24 bg-white border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-6 sm:px-8">
                 <div class="flex flex-col md:flex-row justify-between items-end mb-12 gsap-fade-up">
                     <div class="max-w-2xl">
-                        <h2 class="font-display font-bold text-3xl text-corporate-950 mb-4">Conclave Media Gallery</h2>
+                        <p class="text-accent-primary text-sm font-bold tracking-widest uppercase mb-2">Visual Data</p>
+                        <h2 class="font-display font-bold text-3xl sm:text-4xl text-corporate-950 mb-4">Conclave Media Gallery</h2>
                         <p class="text-slate-600">Browse through our collection of videos and pictures from the Conclave, showcasing the moments of collaboration, innovation, and leadership.</p>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 gsap-stagger-container">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 gsap-stagger-container">
                     
-                    <!-- Gallery Video Item (Added popup attributes) -->
                     <div class="gsap-stagger-item perspective-container lg:col-span-2">
-                        <div class="tilt-card relative h-80 w-full rounded-xl overflow-hidden shadow-md group border border-slate-200 gallery-popup-trigger cursor-pointer" data-type="video" data-src="assets/SURAKSH.mp4">
+                        <div class="tilt-card relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow group border border-slate-100 gallery-popup-trigger cursor-pointer" data-type="video" data-src="assets/SURAKSH.mp4">
                             <video src="assets/SURAKSH.mp4" autoplay loop muted playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none"></video>
-                            <div class="absolute inset-0 bg-corporate-950/30 group-hover:bg-corporate-950/50 transition-colors pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-corporate-950/20 group-hover:bg-corporate-950/40 transition-colors pointer-events-none"></div>
                             
                             <div class="absolute inset-0 flex items-center justify-center inner-3d cursor-pointer pointer-events-none">
-                                <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/40 shadow-lg hover:scale-110 transition-transform">
-                                    <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <div class="w-14 h-14 sm:w-16 sm:h-16 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform text-accent-primary">
+                                    <svg class="w-6 h-6 sm:w-8 sm:h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </div>
-                            <div class="absolute bottom-4 left-6 inner-3d-subtle pointer-events-none">
-                                <span class="bg-accent-light text-corporate-950 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wide">Video</span>
-                                <h4 class="text-white font-display font-bold mt-2 text-xl drop-shadow-md"> </h4>
+                            <div class="absolute bottom-4 left-4 sm:left-6 inner-3d-subtle pointer-events-none">
+                                <span class="bg-accent-primary text-white text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">AI Video Highlights</span>
+                                <h4 class="text-white font-display font-bold mt-2 text-lg sm:text-xl drop-shadow-md">Conclave Highlights & Keynotes</h4>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Gallery Photo Items (Added popup attributes) -->
                     <div class="gsap-stagger-item perspective-container">
-                        <div class="tilt-card relative h-80 w-full rounded-xl overflow-hidden shadow-md group border border-slate-200 gallery-popup-trigger cursor-pointer" data-type="image" data-src="photos/1.jpeg">
+                        <div class="tilt-card relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow group border border-slate-100 gallery-popup-trigger cursor-pointer" data-type="image" data-src="photos/1.jpeg">
                             <img src="photos/1.jpeg" alt="Panel Discussion Picture" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none">
-                            <div class="absolute inset-0 bg-gradient-to-t from-corporate-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-                            <div class="absolute bottom-4 left-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 inner-3d pointer-events-none">
-                                <span class="bg-corporate-800 text-white text-xs font-bold px-2 py-1 rounded-sm uppercase tracking-wide mb-2 inline-block">Picture</span>
-                                <h4 class="text-white font-display font-bold drop-shadow-md"> </h4>
+                            <div class="absolute inset-0 bg-gradient-to-t from-corporate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                            <div class="absolute bottom-4 left-4 sm:left-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 inner-3d pointer-events-none">
+                                <h4 class="text-white font-display font-bold drop-shadow-md">Panel Discussions</h4>
                             </div>
                         </div>
                     </div>
 
                     <div class="gsap-stagger-item perspective-container">
-                        <div class="tilt-card relative h-64 w-full rounded-xl overflow-hidden shadow-md group border border-slate-200 gallery-popup-trigger cursor-pointer" data-type="image" data-src="photos/10.jpeg">
+                        <div class="tilt-card relative h-56 sm:h-64 w-full rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow group border border-slate-100 gallery-popup-trigger cursor-pointer" data-type="image" data-src="photos/10.jpeg">
                             <img src="photos/10.jpeg" alt="Networking Picture" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none">
-                            <div class="absolute inset-0 bg-gradient-to-t from-corporate-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-                            <div class="absolute bottom-4 left-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 inner-3d pointer-events-none">
-                                <span class="bg-corporate-800 text-white text-xs font-bold px-2 py-1 rounded-sm uppercase tracking-wide mb-2 inline-block">Picture</span>
-                                <h4 class="text-white font-display font-bold drop-shadow-md"> </h4>
+                            <div class="absolute inset-0 bg-gradient-to-t from-corporate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                            <div class="absolute bottom-4 left-4 sm:left-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 inner-3d pointer-events-none">
+                                <h4 class="text-white font-display font-bold drop-shadow-md">Networking Moments</h4>
                             </div>
                         </div>
                     </div>
 
                     <div class="gsap-stagger-item perspective-container">
-                        <div class="tilt-card relative h-64 w-full rounded-xl overflow-hidden shadow-md group border border-slate-200 gallery-popup-trigger cursor-pointer" data-type="image" data-src="photos/2.jpeg">
+                        <div class="tilt-card relative h-56 sm:h-64 w-full rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow group border border-slate-100 gallery-popup-trigger cursor-pointer" data-type="image" data-src="photos/2.jpeg">
                             <img src="photos/2.jpeg" alt="Health Tech Demo Picture" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none">
-                            <div class="absolute inset-0 bg-gradient-to-t from-corporate-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-                            <div class="absolute bottom-4 left-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 inner-3d pointer-events-none">
-                                <span class="bg-corporate-800 text-white text-xs font-bold px-2 py-1 rounded-sm uppercase tracking-wide mb-2 inline-block">Picture</span>
-                                <h4 class="text-white font-display font-bold drop-shadow-md"> </h4>
+                            <div class="absolute inset-0 bg-gradient-to-t from-corporate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                            <div class="absolute bottom-4 left-4 sm:left-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 inner-3d pointer-events-none">
+                                <h4 class="text-white font-display font-bold drop-shadow-md">Health Tech Demos</h4>
                             </div>
                         </div>
                     </div>
 
                     <div class="gsap-stagger-item perspective-container">
-                        <div class="tilt-card relative h-64 w-full rounded-xl overflow-hidden shadow-md group border border-slate-200 gallery-popup-trigger cursor-pointer" data-type="image" data-src="photos/4.jpeg">
+                        <div class="tilt-card relative h-56 sm:h-64 w-full rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow group border border-slate-100 gallery-popup-trigger cursor-pointer" data-type="image" data-src="photos/4.jpeg">
                             <img src="photos/4.jpeg" alt="Award Ceremony Picture" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none">
-                            <div class="absolute inset-0 bg-gradient-to-t from-corporate-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-                            <div class="absolute bottom-4 left-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 inner-3d pointer-events-none">
-                                <span class="bg-corporate-800 text-white text-xs font-bold px-2 py-1 rounded-sm uppercase tracking-wide mb-2 inline-block">Picture</span>
-                                <h4 class="text-white font-display font-bold drop-shadow-md"> </h4>
+                            <div class="absolute inset-0 bg-gradient-to-t from-corporate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                            <div class="absolute bottom-4 left-4 sm:left-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 inner-3d pointer-events-none">
+                                <h4 class="text-white font-display font-bold drop-shadow-md">Awards & Recognition</h4>
                             </div>
                         </div>
                     </div>
@@ -325,50 +412,51 @@
             </div>
         </section>
 
-        <!-- Impact Statistics Data Grid -->
-        <section id="impact" class="py-20 bg-corporate-950 border-t border-white/5 relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-96 h-96 bg-corporate-800 rounded-full blur-3xl opacity-30 pointer-events-none"></div>
+        <!-- Impact Statistics Data Grid (Tech Dark) -->
+        <section id="impact" class="py-20 bg-corporate-950 border-t border-corporate-900 relative overflow-hidden">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[300px] bg-accent-primary rounded-full blur-[150px] opacity-10 pointer-events-none"></div>
             
-            <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="text-center mb-16 gsap-fade-3d-up">
-                    <h2 class="font-display font-bold text-3xl text-white">Our Impact Continues to Grow</h2>
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+                <div class="text-center mb-12 sm:mb-16 gsap-fade-3d-up">
+                    <p class="text-accent-light text-sm font-bold tracking-widest uppercase mb-2">Metrics</p>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">Our Impact Continues to Grow</h2>
                 </div>
                 
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center gsap-stagger-container">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 text-center gsap-stagger-container">
                     <div class="gsap-stagger-item perspective-container">
-                        <div class="tilt-card p-6 border border-corporate-900 bg-corporate-900/40 rounded-xl transition shadow-sm h-full flex flex-col justify-center">
-                            <div class="font-display text-2xl lg:text-3xl font-bold text-corporate-100 mb-1 counter inner-3d" data-target="85000">0</div>
-                            <div class="text-xs font-semibold text-accent-light uppercase tracking-wide inner-3d-subtle">Screenings</div>
+                        <div class="tilt-card p-4 sm:p-6 bg-corporate-900/50 backdrop-blur-md border border-corporate-800 rounded-2xl transition shadow-lg hover:shadow-[0_0_15px_rgba(0,240,255,0.15)] h-full flex flex-col justify-center">
+                            <div class="font-display text-2xl sm:text-3xl font-bold gradient-text mb-2 counter inner-3d" data-target="85000">0</div>
+                            <div class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider inner-3d-subtle">Screenings</div>
                         </div>
                     </div>
                     <div class="gsap-stagger-item perspective-container">
-                        <div class="tilt-card p-6 border border-corporate-900 bg-corporate-900/40 rounded-xl transition shadow-sm h-full flex flex-col justify-center">
-                            <div class="font-display text-2xl lg:text-3xl font-bold text-corporate-100 mb-1 counter inner-3d" data-target="12000">0</div>
-                            <div class="text-xs font-semibold text-accent-light uppercase tracking-wide inner-3d-subtle">Teleconsults</div>
+                        <div class="tilt-card p-4 sm:p-6 bg-corporate-900/50 backdrop-blur-md border border-corporate-800 rounded-2xl transition shadow-lg hover:shadow-[0_0_15px_rgba(0,240,255,0.15)] h-full flex flex-col justify-center">
+                            <div class="font-display text-2xl sm:text-3xl font-bold gradient-text mb-2 counter inner-3d" data-target="12000">0</div>
+                            <div class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider inner-3d-subtle">Teleconsults</div>
                         </div>
                     </div>
                     <div class="gsap-stagger-item perspective-container">
-                        <div class="tilt-card p-6 border border-corporate-900 bg-corporate-900/40 rounded-xl transition shadow-sm h-full flex flex-col justify-center">
-                            <div class="font-display text-2xl lg:text-3xl font-bold text-corporate-100 mb-1 counter inner-3d" data-target="45">0</div>
-                            <div class="text-xs font-semibold text-accent-light uppercase tracking-wide inner-3d-subtle">Corridors</div>
+                        <div class="tilt-card p-4 sm:p-6 bg-corporate-900/50 backdrop-blur-md border border-corporate-800 rounded-2xl transition shadow-lg hover:shadow-[0_0_15px_rgba(0,240,255,0.15)] h-full flex flex-col justify-center">
+                            <div class="font-display text-2xl sm:text-3xl font-bold gradient-text mb-2 counter inner-3d" data-target="45">0</div>
+                            <div class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider inner-3d-subtle">Corridors</div>
                         </div>
                     </div>
                     <div class="gsap-stagger-item perspective-container">
-                        <div class="tilt-card p-6 border border-corporate-900 bg-corporate-900/40 rounded-xl transition shadow-sm h-full flex flex-col justify-center">
-                            <div class="font-display text-2xl lg:text-3xl font-bold text-corporate-100 mb-1 counter inner-3d" data-target="150">0</div>
-                            <div class="text-xs font-semibold text-accent-light uppercase tracking-wide inner-3d-subtle">Partners</div>
+                        <div class="tilt-card p-4 sm:p-6 bg-corporate-900/50 backdrop-blur-md border border-corporate-800 rounded-2xl transition shadow-lg hover:shadow-[0_0_15px_rgba(0,240,255,0.15)] h-full flex flex-col justify-center">
+                            <div class="font-display text-2xl sm:text-3xl font-bold gradient-text mb-2 counter inner-3d" data-target="150">0</div>
+                            <div class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider inner-3d-subtle">Partners</div>
                         </div>
                     </div>
                     <div class="gsap-stagger-item perspective-container">
-                        <div class="tilt-card p-6 border border-corporate-900 bg-corporate-900/40 rounded-xl transition shadow-sm h-full flex flex-col justify-center">
-                            <div class="font-display text-2xl lg:text-3xl font-bold text-corporate-100 mb-1 counter inner-3d" data-target="28">0</div>
-                            <div class="text-xs font-semibold text-accent-light uppercase tracking-wide inner-3d-subtle">States</div>
+                        <div class="tilt-card p-4 sm:p-6 bg-corporate-900/50 backdrop-blur-md border border-corporate-800 rounded-2xl transition shadow-lg hover:shadow-[0_0_15px_rgba(0,240,255,0.15)] h-full flex flex-col justify-center">
+                            <div class="font-display text-2xl sm:text-3xl font-bold gradient-text mb-2 counter inner-3d" data-target="28">0</div>
+                            <div class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider inner-3d-subtle">States</div>
                         </div>
                     </div>
                     <div class="gsap-stagger-item perspective-container">
-                        <div class="tilt-card p-6 border border-corporate-900 bg-corporate-900/40 rounded-xl transition shadow-sm h-full flex flex-col justify-center">
-                            <div class="font-display text-2xl lg:text-3xl font-bold text-corporate-100 mb-1 counter inner-3d" data-target="3200">0</div>
-                            <div class="text-xs font-semibold text-accent-light uppercase tracking-wide inner-3d-subtle">Emergencies</div>
+                        <div class="tilt-card p-4 sm:p-6 bg-corporate-900/50 backdrop-blur-md border border-corporate-800 rounded-2xl transition shadow-lg hover:shadow-[0_0_15px_rgba(0,240,255,0.15)] h-full flex flex-col justify-center">
+                            <div class="font-display text-2xl sm:text-3xl font-bold gradient-text mb-2 counter inner-3d" data-target="3200">0</div>
+                            <div class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider inner-3d-subtle">Emergencies</div>
                         </div>
                     </div>
                 </div>
@@ -376,58 +464,70 @@
         </section>
 
         <!-- Speakers Who Joined Us -->
-        <section id="speakers" class="py-24 bg-slate-50 border-t border-slate-200">
-            <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
-                <p class="text-corporate-800 text-sm font-bold tracking-widest uppercase mb-2 gsap-fade-3d-up">Global Leadership</p>
-                <h2 class="font-display font-bold text-3xl text-corporate-950 mb-4 text-center gsap-fade-3d-up">Keynote Speakers Who Joined Us</h2>
-                <p class="text-slate-600 mb-16 text-center gsap-fade-3d-up">Honored by the presence and vision of these esteemed leaders at the Conclave.</p>
+        <section id="speakers" class="py-20 sm:py-24 bg-slate-50 border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 flex flex-col items-center">
+                <p class="text-accent-primary text-sm font-bold tracking-widest uppercase mb-2 gsap-fade-3d-up">Global Leadership</p>
+                <h2 class="font-display font-bold text-3xl sm:text-4xl text-corporate-950 mb-4 text-center gsap-fade-3d-up">Keynote Speakers Who Joined Us</h2>
+                <p class="text-slate-600 mb-12 sm:mb-16 text-center max-w-2xl gsap-fade-3d-up">Honored by the presence and vision of these esteemed leaders at the Conclave, advocating for scalable health technology.</p>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 w-full gsap-stagger-container">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 w-full gsap-stagger-container">
                     <div class="gsap-stagger-item perspective-container">
-                        <div class="tilt-card flex flex-col items-center p-8 bg-white rounded-xl shadow-lg border border-slate-100 h-full hover:border-corporate-800 transition-colors">
-                            <div class="w-48 h-48 mb-6 flex items-center justify-center inner-3d">
+                        <div class="tilt-card flex flex-col items-center p-8 bg-white rounded-2xl shadow-xl border border-slate-100 h-full hover:-translate-y-2 transition-transform">
+                            <div class="w-40 h-40 sm:w-48 sm:h-48 mb-6 flex items-center justify-center inner-3d rounded-full overflow-hidden bg-slate-50 border-4 border-accent-primary/20">
                                 <img src="assets/nitin G.png" alt="Hon'ble Shri Nitin Gadkari" class="w-full h-full object-contain">
                             </div>
-                            <h3 class="font-display font-bold text-lg text-corporate-950 mb-3 text-center inner-3d">Hon'ble Shri Nitin Gadkari</h3>
-                            <p class="text-sm text-slate-600 font-medium leading-relaxed text-justify mb-4 flex-grow inner-3d-subtle">Minister for Road Transport and Highways, Government of India. Shared his vision for infrastructure development and advancing road safety initiatives.</p>
-                            <p class="text-sm text-accent-primary font-bold uppercase tracking-wider text-center inner-3d">Chief Guest</p>
+                            <h3 class="font-display font-bold text-lg text-corporate-950 mb-2 text-center inner-3d">Hon'ble Shri Nitin Gadkari</h3>
+                            <p class="text-sm text-slate-600 font-medium leading-relaxed text-center mb-4 flex-grow inner-3d-subtle">Minister for Road Transport and Highways, Government of India. Shared his vision for infrastructure development and advancing road safety initiatives.</p>
+                            <p class="text-xs text-accent-primary font-bold uppercase tracking-widest text-center inner-3d bg-accent-primary/10 px-4 py-1.5 rounded-full">Chief Guest</p>
                         </div>
                     </div>
 
                     <div class="gsap-stagger-item perspective-container">
-                        <div class="tilt-card flex flex-col items-center p-8 bg-white rounded-xl shadow-lg border border-slate-100 h-full hover:border-corporate-800 transition-colors">
-                            <div class="w-48 h-48 mb-6 flex items-center justify-center inner-3d">
+                        <div class="tilt-card flex flex-col items-center p-8 bg-white rounded-2xl shadow-xl border border-slate-100 h-full hover:-translate-y-2 transition-transform">
+                            <div class="w-40 h-40 sm:w-48 sm:h-48 mb-6 flex items-center justify-center inner-3d rounded-full overflow-hidden bg-slate-50 border-4 border-accent-primary/20">
                                 <img src="assets/prataprao ji.png" alt="Hon'ble Shri Prataprao Jadhav" class="w-full h-full object-contain">
                             </div>
-                            <h3 class="font-display font-bold text-lg text-corporate-950 mb-3 text-center inner-3d">Hon'ble Shri Prataprao Jadhav</h3>
-                            <p class="text-sm text-slate-600 font-medium leading-relaxed text-justify mb-4 flex-grow inner-3d-subtle">Minister of State for Health and Family Welfare, Government of India. Highlighted the importance of strengthening healthcare systems for transport workers.</p>
-                            <p class="text-sm text-accent-primary font-bold uppercase tracking-wider text-center inner-3d">Guest of Honour</p>
+                            <h3 class="font-display font-bold text-lg text-corporate-950 mb-2 text-center inner-3d">Hon'ble Shri Prataprao Jadhav</h3>
+                            <p class="text-sm text-slate-600 font-medium leading-relaxed text-center mb-4 flex-grow inner-3d-subtle">Minister of State for Health and Family Welfare, Government of India. Highlighted the importance of strengthening healthcare systems for transport workers.</p>
+                            <p class="text-xs text-accent-primary font-bold uppercase tracking-widest text-center inner-3d bg-accent-primary/10 px-4 py-1.5 rounded-full">Guest of Honour</p>
                         </div>
                     </div>
 
                     <div class="gsap-stagger-item perspective-container">
-                        <div class="tilt-card flex flex-col items-center p-8 bg-white rounded-xl shadow-lg border border-slate-100 h-full hover:border-corporate-800 transition-colors">
-                            <div class="w-48 h-48 mb-6 flex items-center justify-center inner-3d">
+                        <div class="tilt-card flex flex-col items-center p-8 bg-white rounded-2xl shadow-xl border border-slate-100 h-full hover:-translate-y-2 transition-transform">
+                            <div class="w-40 h-40 sm:w-48 sm:h-48 mb-6 flex items-center justify-center inner-3d rounded-full overflow-hidden bg-slate-50 border-4 border-accent-primary/20">
                                 <img src="assets/rasmus ji.png" alt="H.E. Rasmus Abildgaard Kristensen" class="w-full h-full object-contain">
                             </div>
-                            <h3 class="font-display font-bold text-lg text-corporate-950 mb-3 text-center inner-3d">H.E. Rasmus Abildgaard Kristensen</h3>
-                            <p class="text-sm text-slate-600 font-medium leading-relaxed text-justify mb-4 flex-grow inner-3d-subtle">Ambassador of Denmark to India. Fostered bilateral cooperation between India and Nordic nations on occupational health and road safety.</p>
-                            <p class="text-sm text-accent-primary font-bold uppercase tracking-wider text-center inner-3d">International Guest</p>
+                            <h3 class="font-display font-bold text-lg text-corporate-950 mb-2 text-center inner-3d">H.E. Rasmus Abildgaard Kristensen</h3>
+                            <p class="text-sm text-slate-600 font-medium leading-relaxed text-center mb-4 flex-grow inner-3d-subtle">Ambassador of Denmark to India. Fostered bilateral cooperation between India and Nordic nations on occupational health and road safety.</p>
+                            <p class="text-xs text-accent-primary font-bold uppercase tracking-widest text-center inner-3d bg-accent-primary/10 px-4 py-1.5 rounded-full">International Guest</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Call to Action Banner -->
-        <section class="py-24 bg-corporate-950 text-center border-t border-white/10 relative overflow-hidden">
-            <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-full bg-corporate-900 rounded-full blur-3xl opacity-50 pointer-events-none pulse-blob"></div>
+        <!-- OUR PARTNERS SECTION -->
+        <section id="partners" class="py-20 sm:py-24 bg-white border-t border-slate-100">
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 text-center">
+                <p class="text-accent-primary text-sm font-bold tracking-widest uppercase mb-2 gsap-fade-3d-up">Collaborators</p>
+                <h2 class="font-display font-bold text-3xl sm:text-4xl text-corporate-950 mb-10 sm:mb-16 gsap-fade-3d-up">Our Esteemed Partners</h2>
+                
+                <div class="w-full flex justify-center bg-slate-50 p-6 sm:p-12 rounded-3xl border border-slate-100 shadow-inner gsap-fade-3d-up">
+                    <img src="assets/partners.png" alt="Our Partners" class="max-w-full h-auto object-contain mix-blend-multiply transition-transform hover:scale-105 duration-500">
+                </div>
+            </div>
+        </section>
 
-            <div class="max-w-4xl mx-auto px-6 relative z-10 gsap-fade-3d-up">
-                <p class="text-accent-light text-sm font-bold tracking-widest uppercase mb-4">Upcoming Event</p>
-                <h2 class="font-display font-bold text-3xl md:text-5xl text-white mb-6">Join Us For The Next Chapter.</h2>
-                <p class="text-corporate-100 mb-10 text-lg">Whether you are a healthcare provider, government agency, corporate partner, or community leader — secure your spot at the upcoming Conclave.</p>
-                <a href="https://mission1mn.org/csr_register.html" target="_blank" class="bg-accent-primary text-white px-10 py-4 rounded-md font-semibold hover:bg-accent-light hover:text-corporate-900 transition-colors inline-block shadow-lg tilt-card">
+        <!-- Call to Action Banner (Tech Dark) -->
+        <section class="py-20 sm:py-24 bg-corporate-950 text-center border-t border-corporate-800 relative overflow-hidden">
+            <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-[300px] bg-accent-primary rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
+
+            <div class="max-w-4xl mx-auto px-6 sm:px-8 relative z-10 gsap-fade-3d-up">
+                <p class="text-accent-light text-sm font-bold tracking-widest uppercase mb-4 ai-glow">Upcoming Event</p>
+                <h2 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-white mb-6 leading-tight">Join Us For The Next Chapter.</h2>
+                <p class="text-slate-300 mb-10 text-base sm:text-lg max-w-2xl mx-auto">Whether you are a healthcare provider, government agency, corporate partner, or community leader — secure your spot at the upcoming Conclave.</p>
+                <a href="https://mission1mn.org/csr_register.html" target="_blank" class="bg-gradient-to-r from-accent-primary to-accent-light text-corporate-950 px-10 py-4 rounded-full font-bold hover-ai-glow transition-all duration-300 inline-block shadow-lg tilt-card">
                     Partner with Us
                 </a>
             </div>
@@ -435,18 +535,18 @@
 
     </main>
 
-    <footer class="bg-corporate-950 text-slate-300 py-16 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-sm">
+    <footer class="bg-corporate-950 text-slate-400 py-12 sm:py-16 border-t border-corporate-900">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 text-sm">
             <div class="lg:col-span-1">
                 <div class="flex items-center gap-3 mb-4">
                     <a href="#" class="logo-popup-trigger flex-shrink-0 cursor-pointer" title="View Logo">
-                        <img src="assets/Logo.jpeg" alt="SURAKSHA™ Logo" class="h-8 md:h-10 w-auto object-contain rounded-sm">
+                        <img src="assets/Logo.jpeg" alt="SURAKSHA™ Logo" class="h-8 md:h-10 w-auto object-contain rounded-sm grayscale hover:grayscale-0 transition-all">
                     </a>
-                    <a href="#" class="font-display font-bold text-xl text-white hover:text-corporate-100 transition-colors" title="Go to Home">
-                        SURAKSHA<span class="text-accent-light text-sm">™</span>
+                    <a href="#" class="font-display font-bold text-xl text-white hover:text-accent-light transition-colors" title="Go to Home">
+                        SURAKSHA<span class="text-accent-primary text-sm">™</span>
                     </a>
                 </div>
-                <p class="leading-relaxed text-justify">Healthy Highways, Healthy Communities Initiative.</p>
+                <p class="leading-relaxed">Healthy Highways, Healthy Communities AI Initiative.</p>
             </div>
             <div class="lg:col-span-1">
                 <h4 class="text-white font-semibold mb-4 uppercase tracking-wider text-xs">Contact Us</h4>
@@ -458,25 +558,26 @@
             </div>
             <div class="lg:col-span-1">
                 <h4 class="text-white font-semibold mb-4 uppercase tracking-wider text-xs">Inquiries</h4>
-                <p class="mb-2"><a href="mailto:info@mission1mn.org" class="hover:text-corporate-100 transition-colors">info@mission1mn.org</a></p>
-                <p><a href="https://mission1mn.org" target="_blank" class="hover:text-corporate-100 transition-colors">mission1mn.org</a></p>
+                <p class="mb-2"><a href="mailto:info@mission1mn.org" class="hover:text-accent-light transition-colors">info@mission1mn.org</a></p>
+                <p><a href="https://mission1mn.org" target="_blank" class="hover:text-accent-light transition-colors">mission1mn.org</a></p>
             </div>
             <div class="lg:col-span-1 flex flex-col lg:items-end lg:text-right h-full justify-between">
                 <div>
                     <h4 class="text-white font-semibold mb-4 uppercase tracking-wider text-xs">Join The Mission</h4>
-                    <a href="https://mission1mn.org/csr_register.html" target="_blank" class="hover:text-corporate-100 block transition-colors">Partner With Us</a>
+                    <a href="https://mission1mn.org/csr_register.html" target="_blank" class="hover:text-accent-light block transition-colors">Partner With Us</a>
                 </div>
                 <div class="mt-8 text-xs">
-                    <p class="mb-2">&copy; 2026 SURAKSHA™. All rights reserved.</p>
-                    <p class="text-slate-500">
-                        ( Made by - <a href="https://vmcloudlabs.in" target="_blank" class="text-white hover:text-accent-light underline transition-colors font-medium">VMCloudLabs</a> )
+                    <p class="mb-2">© 2026 SURAKSHA™. All rights reserved.</p>
+                    <p class="text-slate-600">
+                        ( Made by - <a href="https://vmcloudlabs.in" target="_blank" class="text-slate-400 hover:text-accent-primary underline transition-colors font-medium">VMCloudLabs</a> )
                     </p>
                 </div>
             </div>
         </div>
     </footer>
     
-    <div class="tricolor-border w-full"></div>
+    <!-- AI Animated Bottom Border -->
+    <div class="ai-top-border w-full h-1"></div>
 
     <!-- GSAP, ScrollTrigger, Lenis CDNs -->
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
